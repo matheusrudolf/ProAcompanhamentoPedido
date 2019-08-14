@@ -21,11 +21,13 @@ namespace ProAcompanhamentoPedido.Repositorio
         {
             modelBuilder.HasDefaultSchema("public");
 
+            // Mapeamento Relacionamento
             modelBuilder.Entity<Pedido>()
                 .HasOne(p => p.Cliente)
                 .WithMany(c => c.Pedidos)
                 .HasForeignKey(p => p.ClienteId);
 
+            // Mapeamento do enum DomStatusPedido
             modelBuilder
             .Entity<Pedido>()
             .Property(p => p.Status)
